@@ -107,7 +107,7 @@ public class MSButton
         {
             clicked = true;
         }
-        if(mouseButton==RIGHT)
+        if(mouseButton==RIGHT && !buttons[r][c].isClicked())
         {
             marked = !marked;
         }
