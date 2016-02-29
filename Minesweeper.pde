@@ -47,6 +47,16 @@ public void draw ()
     background( 0 );
     if(isWon())
         displayWinningMessage();
+    for(int r=0; r<buttons.length; r++)
+    {
+        for(int c=0; c<buttons[r].length; c++)
+        {
+            if(bombs.contains(buttons[r][c]) && buttons[r][c].isClicked())
+            {
+                displayLosingMessage();
+            }
+        }
+    }
 }
 public boolean isWon()
 {
@@ -70,6 +80,21 @@ public boolean isWon()
 public void displayLosingMessage()
 {
     //your code here
+    String loseMessage = "A loser is you!!";
+    for(int c=5; c<loseMessage.length()+5; c++)
+    {
+        buttons[12][c].setLabel(loseMessage.substring(c-5,c-4));
+    }
+    for(int r=0; r<buttons.length; r++)
+    {
+        for(int c=0; c<buttons[r].length; c++)
+        {
+            if(bombs.contains(buttons[r][c])&&!buttons[r][c].isClicked())
+            {
+                buttons[r][c].mousePressed();
+            }
+        }
+    }
 }
 public void displayWinningMessage()
 {
@@ -80,7 +105,6 @@ public void displayWinningMessage()
         buttons[12][c].setLabel(winMessage.substring(c-5,c-4));
     }
 }
-
 public class MSButton
 {
     private int r, c;
