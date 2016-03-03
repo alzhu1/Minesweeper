@@ -211,10 +211,3 @@ public class MSButton
         return numBombs;
     }
 }
-public void keyPressed()
-{
-    if(isWon() || lost)
-    {
-        setup();
-    }
-}
